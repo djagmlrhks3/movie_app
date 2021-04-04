@@ -1,63 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function Food({ name, picture, rating }) {
-  return (
-    <div> 
-      <h2>I like {name}</h2>
-      <h4>{rating}/5.0</h4>
-      <img src={picture} alt={name}/>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    count: 0,
+  };
+
+  add = () => {
+    this.setState(current => ({
+      count: current.count+1
+    }));
+  };
+
+  minus = () => {
+    this.setState(current => ({
+      count: current.count-1
+    }));
+  };
+
+  render() { // 함수가 아닌 클래스이기 때문에 return이 아닌 render() 함수 사용
+    return (
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    )
+  }
 }
-
-const foodILike = [
-  {
-    id: 1,
-    name: 'Kimchi',
-    image: 'https://picsum.photos/200/300',
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: 'Samgyeopsal',
-    image: 'https://picsum.photos/200/300',
-    rating: 4.9,
-  },
-  {
-    id: 3,
-    name: 'Bibimbap',
-    image: 'https://picsum.photos/200/300',
-    rating: 3,
-  },
-  {
-    id: 4,
-    name: 'Doncasu',
-    image: 'https://picsum.photos/200/300',
-    rating: 1.5,
-  },
-  {
-    id: 5,
-    name: 'Kimbap',
-    image: 'https://picsum.photos/200/300',
-    rating: 2.5,
-  },
-];
-
-function App() {
-  return (
-    <div>
-      {foodILike.map(dish => (
-        <Food key={dish.id} name={dish.name} picture={dish.image} rating={dish.rating} />
-      ))}
-    </div>
-  );
-}
-
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  rating: PropTypes.number
-};
 
 export default App;
