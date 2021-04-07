@@ -7,6 +7,7 @@ import './Movie.css';
 import { Link } from 'react-router-dom'
 
 function Movie({ title, year, summary, poster, genres }) {
+    console.log(poster)
     return (
         <div className="movie">
             <Link 
@@ -36,7 +37,7 @@ Movie.propTypes = {
     year: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
-    poster: PropTypes.string,
+    poster: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
